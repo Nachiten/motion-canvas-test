@@ -5,6 +5,9 @@ export default makeScene2D(function* (view) {
   const rects: Rect[] = [];
   const text = createRef<Txt>();
 
+  const initialColor = "#5adcff";
+  const finalColor = "#ff5656";
+
   // Create some rects
   view.add(
     range(5).map(i => (
@@ -15,7 +18,7 @@ export default makeScene2D(function* (view) {
         height={100}
         x={-350 + 200 * i}
         y={-600}
-        fill="#88C0D0"
+        fill={initialColor}
         radius={10}
       >
         <Txt
@@ -37,7 +40,7 @@ export default makeScene2D(function* (view) {
   );
 
   yield* all(
-    ...rects.map((rect, i) => rect.fill('red', delay)),
+    ...rects.map((rect, i) => rect.fill(finalColor, delay*2)),
   );
 
   yield* sequence(
